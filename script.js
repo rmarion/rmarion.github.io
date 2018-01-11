@@ -50,6 +50,8 @@ $(document).ready(function() {
 	$('#demoh').click(function() {
 		$('.container-right').load('./DemoH/demoh.html');
 	})	
+	$('#contact').click(function() {
+		$('.container-right').load('./Contact/contact.html');
 
 });
 
