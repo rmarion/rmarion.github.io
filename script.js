@@ -53,6 +53,5 @@ $(document).ready(function() {
 	$('#contact').click(function() {
 		$('.container-right').load('./Contact/contact.html');
 
-});
-
-
+	})
+})
