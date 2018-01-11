@@ -1,0 +1,85 @@
+body
+{
+	background-color: #FFFFFF;
+}
+
+.top-banner
+{
+	width: 100%;
+	margin-top: -10px;
+	margin-left: -10px;
+	background-color: #9999FF;
+	position: fixed;
+}
+
+.top-ul
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+.top-li
+{
+
+	display: inline-block;
+	font-family: Verdana;
+	font-size: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-right: -5px;
+	color: #FFFFCC;
+	padding-top: 38px;
+	padding-bottom: 38px;
+	background-color: #9999FF;
+	transition: background-color 0.3s ease;
+	cursor: pointer
+}
+
+.top-hover 
+{
+	background-color: #BBBBFF;
+}
+
+.container-left
+{
+	float: left;
+	margin-top: 90px;
+	margin-left: -10px;
+	display: inline-block;
+	width: 150px;
+	background-color: #9999C3;
+}
+
+.container-right
+{
+	float: left;
+	margin-top: 90px;
+	padding-left: 25px;
+	padding-top: 25px;
+	display: inline-block;
+	width: 75%;
+	height: 800px;
+}
+
+.left
+{
+	float: left;
+	clear: left;
+	display: block;
+	width: 100%;
+	background-color: #9999C3;
+	transition: background-color 0.3s ease;
+	margin-right: 10px;
+	font-family: Verdana;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	text-align: center;
+	color: #FFFFCC;
+	cursor: pointer;
+}
+
+.left-hover
+{
+	background-color: #AAAAFF;	
+}

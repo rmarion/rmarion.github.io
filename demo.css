@@ -1,0 +1,14 @@
+
+.demoa
+{
+	height: 100%;
+	width: 100%;
+}
+
+
+.demoa > div
+{
+	text-align: center;
+	margin: auto;
+	border: 2px black solid;
+}
