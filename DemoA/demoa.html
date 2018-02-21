@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 	<head>
-		<title>Demo A</title>
+		<title>Heightmaps</title>
 	</head>
+        <script type="text/javascript" src="../jquery-1.11.3.min.js"> </script>
+        <script type="text/javascript" src="demoa.js"> </script>
 	<body>
 		<script type="text/javascript" src="demoa.js"></script>
 		<link rel="stylesheet" href="demoa.css" type="text/css" />
 		<div class="demoa">
-			<div id="main">
+			<div class="top-banner">
 				Heightmaps
-				<!-- Heightmap div-->
-				<!-- Trimap div-->
+			</div>
+			<div id="main">
+				<!-- Heightmap canvas-->
+				<div class="hmp">
+					<canvas class="hmp-canvas" id="hmpCanvas"></canvas>
+					<ul class="hmp-buttons"></ul>
+				</div>
+				<!-- Trimap canvas-->
+				<div class="tri">
+					<canvas class="hmp-canvas" id="triCanvas"></canvas>
+					<ul class="tri-buttons"></ul>
+				</div>
 			</div>
 		</div>
 	</body>

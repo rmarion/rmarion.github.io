@@ -12,3 +12,17 @@
 	margin: auto;
 	border: 2px black solid;
 }
+
+.demoa > hmpCanvas
+{
+	height: 40%;
+	width: 40%;
+	border: 1px solid #000000;
+}
+
+.demoa > triCanvas
+{
+	height: 40%;
+	width: 40%;
+	border: 1px solid #000000;
+}

@@ -49,7 +49,7 @@ body
 	display: inline-block;
 	width: 150px;
 	background-color: #9999C3;
-	height: 100%;
+	height: 100vh;
 }
 
 .container-right
@@ -60,7 +60,7 @@ body
 	padding-top: 25px;
 	display: inline-block;
 	width: 75%;
-	height: 800px;
+	height: 100%;
 }
 
 .left
