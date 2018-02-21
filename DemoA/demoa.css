@@ -6,7 +6,7 @@
 }
 
 
-.top-banner{
+.demoa .top-banner{
 	margin: auto;
 	width: 100%;
         background-color: #6666ff;
@@ -20,11 +20,11 @@
 	height: 20px;
 }
 
-.hmp{
+.demoa .hmp{
 	float: left;
 }
 
-.hmp-canvas
+.demoa .hmp-canvas
 {
 	height: 512px;
 	width: 512px;
@@ -32,16 +32,16 @@
 	float: left;
 }
 
-.hmp-buttons
+.demoa .hmp-buttons
 {
 
 }
 
-.tri{
+.demoa .tri{
 	float: right;
 }
 
-.tri-canvas
+.demoa .tri-canvas
 {
 	height: 512px;
 	width: 512px;
@@ -49,7 +49,7 @@
 	float: left;
 }
 
-.tri-buttons
+.demoa .tri-buttons
 {
 
 }
