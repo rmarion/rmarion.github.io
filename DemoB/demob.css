@@ -1,15 +1,12 @@
 
-.demoa
+.demob
 {
 	height: 100%;
 	width: 100%;
-	overflow: auto;
-	margin-left: -10px;
-	margin-top: -10px
 }
 
 
-.demoa .banner{
+.demob .banner{
 	margin: auto;
 	width: 100%;
         background-color: #6666ff;
@@ -23,11 +20,11 @@
 	height: 20px;
 }
 
-.demoa .hmp{
+.demob .walker{
 	float: left;
 }
 
-.demoa .hmp-canvas
+.demob .walker-canvas
 {
 	height: 512px;
 	width: 512px;
@@ -35,24 +32,8 @@
 	float: left;
 }
 
-.demoa .hmp-buttons
+.demob .walker-buttons
 {
 
 }
 
-.demoa .tri{
-	float: right;
-}
-
-.demoa .tri-canvas
-{
-	height: 512px;
-	width: 512px;
-	border: 2px black solid;
-	float: left;
-}
-
-.demoa .tri-buttons
-{
-
-}
