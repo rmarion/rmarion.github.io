@@ -191,19 +191,67 @@
 	height: 20px;
 }
 
-.demoe .city{
-	float: left;
-}
 
-.demoe .city-canvas
+.demof
 {
-	height: 512px;
-	width: 512px;
-	border: 2px black solid;
-	float: left;
+	height: 100%;
+	width: 100%;
 }
 
-.demoe .city-buttons
+
+.demof .banner{
+	margin: auto;
+	width: 100%;
+        background-color: #6666ff;
+        text-align: center;
+        display: inline-block;
+        font-family: Verdana;
+        font-size: 20px;
+        color: #FFFFCC;
+        padding-top: 38px;
+        padding-bottom: 38px;
+	height: 20px;
+}
+
+.demog
 {
-
+	height: 100%;
+	width: 100%;
 }
+
+
+.demog .banner{
+	margin: auto;
+	width: 100%;
+        background-color: #6666ff;
+        text-align: center;
+        display: inline-block;
+        font-family: Verdana;
+        font-size: 20px;
+        color: #FFFFCC;
+        padding-top: 38px;
+        padding-bottom: 38px;
+	height: 20px;
+}
+
+.demoh
+{
+	height: 100%;
+	width: 100%;
+}
+
+
+.demoh .banner{
+	margin: auto;
+	width: 100%;
+        background-color: #6666ff;
+        text-align: center;
+        display: inline-block;
+        font-family: Verdana;
+        font-size: 20px;
+        color: #FFFFCC;
+        padding-top: 38px;
+        padding-bottom: 38px;
+	height: 20px;
+}
+

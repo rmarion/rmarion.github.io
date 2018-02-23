@@ -1,24 +1,59 @@
 <!DOCTYPE html>
 	<head>
-                <title>Node Walker</title>
-        </head>
-        <script type="text/javascript" src="../jquery-1.11.3.min.js"> </script>
-        <script type="text/javascript" src="demob.js"> </script>
-        <body>
-                <script type="text/javascript" src="demob.js"></script>
-                <link rel="stylesheet" href="demob.css" type="text/css" />
-                <div class="demob">
-
+		<title> rmarion.com </title>
+		<link rel="stylesheet" type="text/css" href="../stylesheet.css" />
+		<link rel="stylesheet" type="text/css" href="../demos.css" />
+		<script type="text/javascript" src="../jquery-1.11.3.min.js"> </script>
+		<script type="text/javascript" src="../script.js"> </script>
+		<script type="text/javascript" src="demob.js"></script>
+		<script type="text/javascript" src="../gl-matrix.js"></script>
+		</script>
+	</head>
 	<body>
-		<div class="demob">
-			<div class="banner">
-				Node Walker
+		<div class="top-banner">
+			<ul class="top-ul">
+				<li class="top-li" id="home" onclick=window.location.href="../index.html">Home</li>
+				<li class="top-li" id="about">About</li>
+				<li class="top-li" id="contact">Contact</li>
+			</ul>
+		</div>
+		<div class="container-left">
+			<div class="left" id="demoa" onclick=window.location.href="../DemoA/demoa.html">
+				 Heightmaps
 			</div>
-			<div id="main">
-				<div class="walker">
-                                        <canvas class="walker-canvas" id="walkerCanvas"></canvas>
-                                        <ul class="walker-buttons"></ul>
-                                </div>
+			<div class="left" id="demob">
+				 Node Walker
+			</div>
+			<div class="left" id="democ" onclick=window.location.href="../DemoC/democ.html">
+				 Building Generator
+			</div>
+			<div class="left" id="demod" onclick=window.location.href="../DemoD/demod.html">
+				 Modern NPC Generator
+			</div>
+			<div class="left" id="demoe" onclick=window.location.href="../DemoE/demoe.html">
+				 Procedural City Simulation
+			</div>
+			<div class="left" id="demof" onclick=window.location.href="../DemoF/demof.html">
+				 Biomes
+			</div>
+			<div class="left" id="demog" onclick=window.location.href="../DemoG/demog.html">
+				 World Generation
+			</div>
+			<div class="left" id="demoh" onclick=window.location.href="../DemoH/demoh.html">
+				 Past Work
+			</div>
+		</div>
+		<div class="container-right" id="container-right-main">
+			<div class="demob">
+				<div class="banner">
+					Node Walker
+				</div>
+				<div id="main">
+					<div class="walker">
+	                                        <canvas class="walker-canvas" id="walkerCanvas"></canvas>
+	                                        <ul class="walker-buttons"></ul>
+	                                </div>
+				</div>
 			</div>
 		</div>
 	</body>
