@@ -359,7 +359,7 @@ function loadTexture(gl, url) {
 		 */
 		if (isPowerOf2(image.width) && isPowerOf2(image.height)){
 			// Yes, it's a power of 2, generate mips
-			gl.gnerateMipmap(gl.TEXTURE_2D);
+			gl.generateMipmap(gl.TEXTURE_2D);
 		} else {
 			// not power of 2, turn of mips and set wrapping to clamp to edge
 			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
