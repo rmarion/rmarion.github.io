@@ -26,25 +26,26 @@ function drawTrimap(){
 	// Vertex shader
 	const vsSource = `
 		attribute vec4 aVertexPosition;
-		attribute vec4 aVertexColor;
+		attribute vec2 aTextureCoord;
 
 		uniform mat4 uModelViewMatrix;
 		uniform mat4 uProjectionMatrix;
 
-		varying lowp vec4 vColor;
+		varying highp vec2 vTextureCoord;
 
-		void main(){
+		void main(void){
 			gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
-			vColor = aVertexColor;
+			vTextureCoord = aTextureCoord;
 		}
 	`;
 
 	// Frag shader
 	const fsSource = `
-		varying lowp vec4 vColor;
+		varying highp vec2 vTextureCoord;
+		uniform sampler2D uSampler;
 
 		void main() {
-			gl_FragColor = vColor;
+			gl_FragColor = texture2D(uSampler, vTextureCoord);
 		}
 	`;
 
@@ -114,6 +115,38 @@ function drawTrimap(){
 		20, 21, 22,		20, 22, 23,	// left
 	];
 
+	const textureCoordinates = [
+		// front
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+		// back
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+		// top
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+		// bottom
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+		// right
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+		// left
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+	];
 	
 	var triCanvas = document.getElementById("triCanvas");
 	var gl = triCanvas.getContext("webgl");
@@ -132,15 +165,16 @@ function drawTrimap(){
 		program: shaderProgram,
 		attribLocations: {
 			vertexPosition: gl.getAttribLocation(shaderProgram, 'aVertexPosition'),
-			vertexColor: gl.getAttribLocation(shaderProgram, 'aVertexColor'),
+			textureCoord: gl.getAttribLocation(shaderProgram, 'aTextureCoord'),
 		},
 		uniformLocations: {
 			projectionMatrix: gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
 			modelViewMatrix: gl.getUniformLocation(shaderProgram, 'uModelViewMatrix'),
+			uSampler: gl.getUniformLocation(shaderProgram, 'uSampler'),
 		},
 	};
     
-	const buffers = initBuffers(gl, positions, colors, indices);
+	const buffers = initBuffers(gl, positions, indices, textureCoordinates);
 
 	var then = 0;
 
@@ -150,14 +184,14 @@ function drawTrimap(){
 		const deltaTime = now - then;
 		then = now;
 
-		drawScene(gl, programInfo, buffers, deltaTime);
+		drawScene(gl, programInfo, buffers, texture, deltaTime);
 
 		requestAnimationFrame(render);
 	}
 	requestAnimationFrame(render);
 }
 
-function drawScene(gl, programInfo, buffers, deltaTime){
+function drawScene(gl, programInfo, buffers, texture, deltaTime){
 	
 	gl.clearColor(0.0, 0.0, 0.0, 1.0); // black, opaque
 	gl.clearDepth(1.0);// clear everything
@@ -221,24 +255,21 @@ function drawScene(gl, programInfo, buffers, deltaTime){
 			programInfo.attribLocations.vertexPosition);
 	}
 
-	// tell webgl how to pull out the coors from the color buffer
-	// into the vertexcolor attribute
 	{
-		const numComponents = 4;
+		const numComponents = 2;
 		const type = gl.FLOAT;
 		const normalize = false;
 		const stride = 0;
 		const offset = 0;
-		gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color);
+		gl.bindBuffer(gl.ARRAY_BUFFER, buffers.textureCoord);
 		gl.vertexAttribPointer(
-			programInfo.attribLocations.vertexColor,
-			numComponents,
-			type,
-			normalize,
-			stride,
+			programInfo.attribLocations.textureCoord, 
+			numComponents, 
+			type, 
+			normalize, 
+			stride, 
 			offset);
-		gl.enableVertexAttribArray(
-			programInfo.attribLocations.vertexColor);
+		gl.enableVertexAttribArray(programInfo.attribLocations.textureCoord);
 	}
 
 	// tell webgl to use our program when drawing
@@ -254,6 +285,10 @@ function drawScene(gl, programInfo, buffers, deltaTime){
 		false,
 		modelViewMatrix);
 
+	gl.activeTexture(gl.TEXTURE0); // tell webgl we want to affect texture unit 0
+	gl.bindTexture(gl.TEXTURE_2D, texture); // bind the texture to texture unit 0
+	gl.uniform1i(programInfo.uniformLocations.uSampler, 0); // tell the shader we bound the texture to texture unit 0
+
 	{
 		const vertexCount = 36;
 		const type = gl.UNSIGNED_SHORT;
@@ -264,25 +299,26 @@ function drawScene(gl, programInfo, buffers, deltaTime){
 	cubeRotation += deltaTime;
 }
 
-function initBuffers(gl, positions, colors, indices){
+function initBuffers(gl, positions, indices, textureCoords){
 	const positionBuffer = gl.createBuffer();
 	gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER,
 				new Float32Array(positions),
 				gl.STATIC_DRAW);
 
-	const colorBuffer = gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
-
 	const indexBuffer = gl.createBuffer();
 	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
 	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,
-		new Uint16Array(indices), gl.STATIC_DRAW);
+				new Uint16Array(indices), gl.STATIC_DRAW);
+
+	const textureCoordBuffer = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, textureCoordBuffer);
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoords),
+					gl.STATIC_DRAW);
 
 	return {
 		position: positionBuffer,
-		color: colorBuffer,
+		textureCoord: textureCoordBuffer,
 		indices: indexBuffer,
 	};
 }
@@ -364,10 +400,10 @@ function loadTexture(gl, url) {
 			// not power of 2, turn of mips and set wrapping to clamp to edge
 			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
 			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTuRE_MIN_FILER, gl.LINEAR);
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILER, gl.LINEAR);
 		}
 	};
-	image.setAttribute('crossorigin', 'anonymous');
+	//image.setAttribute('crossorigin', 'anonymous');
 	image.src = url;
 
 	return texture;
