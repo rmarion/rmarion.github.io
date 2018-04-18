@@ -1,6 +1,6 @@
 body
 {
-	background-color: #31314d;
+	background-color: #f2f2f2;
 }
 
 .top-banner
@@ -9,7 +9,7 @@ body
 	width: 105%;
 	margin-top: -10px;
 	margin-left: -10px;
-	background-color: #9999FF;
+	background-color: #000066;
 	position: fixed;
 }
 
@@ -32,7 +32,7 @@ body
 	color: #FFFFCC;
 	padding-top: 38px;
 	padding-bottom: 38px;
-	background-color: #9999FF;
+	background-color: #000066;
 	transition: background-color 0.3s ease;
 	cursor: pointer
 }

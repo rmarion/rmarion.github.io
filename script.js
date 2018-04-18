@@ -26,6 +26,7 @@ $(document).ready(function() {
 		$(this).removeClass('top-hover');
 	})
 	/* Left Button Load Functions (load in large central div) */
+    /*
 	$('#demob').click(function() {
 		$('.container-right').load('./DemoB/demob.html');
 	})	
@@ -47,6 +48,7 @@ $(document).ready(function() {
 	$('#demoh').click(function() {
 		$('.container-right').load('./DemoH/demoh.html');
 	})	
+    */
 	$('#contact').click(function() {
 		$('.container-right').load('./Contact/contact.html');
 
